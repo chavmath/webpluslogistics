@@ -130,7 +130,7 @@
                     </h2>
                 </div>
                 <p class="section-text text-justify">
-                    En Pluslogistics S.A. brindamos servicios logísticos especializados mediante el uso
+                    En <strong>Pluslogistics S.A.</strong> brindamos servicios logísticos especializados mediante el uso
                     de
                     tecnologías de la información para dar cumplimiento a nuestros <strong>objetivos de
                         calidad</strong>,

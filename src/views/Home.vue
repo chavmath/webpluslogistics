@@ -142,7 +142,7 @@
                             rel="noopener noreferrer"><img src="@/assets/linkedin1.svg" height="35" alt=""
                                 class="px-2" />@pluslogistics</a>
                     </li>
-                    <li>
+                    <li class="mt-1">
                         <a href="https://www.instagram.com/pluslogisticsec?igsh=MWV4Zzh0d2Jxa2ljNQ==" target="_blank"
                             rel="noopener noreferrer"><img src="@/assets/instagram1.svg" height="35" alt=""
                                 class="px-2" />@pluslogistics</a>
