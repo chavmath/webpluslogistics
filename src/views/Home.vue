@@ -1,44 +1,95 @@
 <template>
-    <div class="vh-100 text-center container-fluid">
-        <div class="row pt-2 px-5 g-0 justify-content-between fijo" style="height: 70px">
-            <div class="col-auto align-items-center d-flex justify-content-center">
-                <div class="d-flex flex-row align-items-center justify-content-between" style="width: 100%">
-                    <a href="#" class="escala"><img src="@/assets/pluslogistics.svg" height="35" alt=""
-                            data-toggle="tooltip" data-placement="top" title="Pluslogistics grupo" /></a>
-                    <a href="#" class="escala">
-                        <img src="@/assets/alma.svg" height="35" class="px-3" alt="" data-toggle="tooltip"
-                            data-placement="top" title="Alma Plus" /></a>
-                    <a href="#" class="escala"><img src="@/assets/bodega.svg" height="40" class="px-3" alt=""
-                            data-toggle="tooltip" data-placement="top" title="Bodega+" /></a>
-
+    <div class="vh-100 text-center container-fluid landing-wrapper">
+        <div class="row pt-2 px-3 px-md-5 g-0 justify-content-between align-items-center fijo"
+            style="height: 70px; padding-right: 1rem !important;">
+            <div class="col col-md-auto d-flex align-items-center empresas-header">
+                <div class="d-flex flex-row align-items-center justify-content-start w-100 empresas-strip-inner">
+                    <a href="#" class="escala me-2">
+                        <img src="@/assets/pluslogistics.svg" height="35" alt="Pluslogistics grupo"
+                            data-toggle="tooltip" data-placement="top" title="Pluslogistics grupo" />
+                    </a>
+                    <a href="#" class="escala me-2">
+                        <img src="@/assets/alma.svg" height="35" alt="Alma Plus" data-toggle="tooltip"
+                            data-placement="top" title="Alma Plus" />
+                    </a>
+                    <router-link to="/bodegaplus" class="escala me-2">
+                        <img src="@/assets/bodega.svg" height="40" alt="Bodega+" data-toggle="tooltip"
+                            data-placement="top" title="Bodega+" />
+                    </router-link>
                     <a href="mailto:info@easycargo.com.ec" class="escala">
-                        <img src="@/assets/logistic.svg" height="35" alt="" data-toggle="tooltip" data-placement="top"
-                            title="Logistic Planet" />
+                        <img src="@/assets/logistic.svg" height="35" alt="Logistic Planet" data-toggle="tooltip"
+                            data-placement="top" title="Logistic Planet" />
                     </a>
                 </div>
             </div>
-            <div class="col-auto align-items-center d-flex justify-content-center menuderecho absoluto">
+
+            <div class="col-2 d-lg-none text-end">
+                <button class="btn btn-link p-0 border-0 shadow-none" type="button" @click="isMenuOpen = !isMenuOpen"
+                    aria-label="Menú">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+
+            <div class="col-auto d-none d-lg-flex align-items-center justify-content-center menuderecho">
                 <ul class="d-flex flex-row list-unstyled text-uppercase align-items-center menu" style="height: 100%">
                     <li class="mx-3 derecho">
-                        <router-link to="/empresa" class="text-decoration-none menu-link">Empresa</router-link>
+                        <router-link to="/empresa" class="text-decoration-none menu-link">
+                            Empresa
+                        </router-link>
                     </li>
                     <li class="mx-3 derecho">
-                        <router-link to="/servicios" class="text-decoration-none menu-link">Servicios</router-link>
+                        <router-link to="/servicios" class="text-decoration-none menu-link">
+                            Servicios
+                        </router-link>
                     </li>
                     <li class="mx-3 derecho">contactos</li>
                     <li class="derecho mx-2 d-flex justify-content-center align-items-center">
                         <img src="@/assets/user.svg" width="20" height="20" class="mx-auto" alt="" />
                     </li>
                     <li class="ps-3">
-                        <a href="#" class="escala"><img src="@/assets/siscal.svg" height="35" alt=""
-                                class="mx-auto d-block" data-toggle="tooltip" data-placement="top"
-                                title="Siscal+" /></a>
+                        <a href="#" class="escala">
+                            <img src="@/assets/siscal.svg" height="30" alt="Siscal+" class="mx-auto d-block"
+                                data-toggle="tooltip" data-placement="top" title="Siscal+" />
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="row sizing" style="margin-top: 50px; height: 400px;">
-            <div id="carouselExampleIndicators" class="carousel slide g-0" style="height: 400px;">
+
+        <div v-if="isMenuOpen" class="row d-lg-none bg-white shadow-sm mobile-menu-wrapper">
+            <div class="col-12">
+                <ul class="list-unstyled mb-2 text-uppercase mobile-menu">
+                    <li class="py-2 border-bottom">
+                        <router-link to="/empresa" class="text-decoration-none menu-link" @click="isMenuOpen = false">
+                            Empresa
+                        </router-link>
+                    </li>
+                    <li class="py-2 border-bottom">
+                        <router-link to="/servicios" class="text-decoration-none menu-link" @click="isMenuOpen = false">
+                            Servicios
+                        </router-link>
+                    </li>
+                    <li class="py-2 border-bottom" @click="isMenuOpen = false">
+                        Contactos
+                    </li>
+                    <li class="py-2 border-bottom">
+                        <img src="@/assets/user.svg" width="20" height="20" class="me-2" alt="" />
+                        <span>Acceso</span>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="text-decoration-none menu-link">
+                            <img src="@/assets/siscal.svg" height="30" alt="Siscal+" class="me-2" data-toggle="tooltip"
+                                data-placement="top" title="Siscal+" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row sizing">
+            <div id="carouselExampleIndicators" class="carousel slide g-0">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                         class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -49,26 +100,35 @@
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
                         aria-label="Slide 4"></button>
                 </div>
+
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div style="padding:32% 0 0 0;position:relative;">
-                            <iframe ref="vimeoIframe" :src="iframeSrc" frameborder="0"
+                        <div class="carousel-media">
+                            <iframe ref="vimeoIframe" :src="iframeSrc"
                                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; margin-top: -40px;"
-                                title="Presentación comercial Pluslogistics (1)">
-                            </iframe>
+                                title="Presentación comercial Pluslogistics (1)"></iframe>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="@/assets/slider/pluslogistics_cover.jpg" class="d-block w-100" alt="..." />
+                        <div class="carousel-media">
+                            <img src="@/assets/slider/pluslogistics_cover.jpg" alt="..."
+                                class="carousel-img img-fill" />
+                        </div>
                     </div>
+
                     <div class="carousel-item">
-                        <img src="@/assets/slider/10.png" class="d-block w-100" alt="..." />
+                        <div class="carousel-media">
+                            <img src="@/assets/slider/10.png" alt="..." class="carousel-img img-cover" />
+                        </div>
                     </div>
+
                     <div class="carousel-item">
-                        <img src="@/assets/slider/4.png" class="d-block w-100" alt="..." />
+                        <div class="carousel-media">
+                            <img src="@/assets/slider/4.png" alt="..." class="carousel-img img-fill" />
+                        </div>
                     </div>
                 </div>
+
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon absoluto flechaizq" aria-hidden="true"></span>
@@ -82,12 +142,12 @@
             </div>
         </div>
 
-        <div class="row mt-4 align-items-center">
-            <div class="col">
-                <img src="@/assets/mockup.png" height="500" alt="" />
+        <div class="row align-items-center gx-4 gy-4 mb-lg-5">
+            <div class="col-12 col-lg mb-3">
+                <img src="@/assets/mockup.png" class="img-fluid" alt="" />
             </div>
-            <div class="col-4 d-flex flex-column align-items-center text-center">
-                <p class="h1 text-uppercase encabezado mx-auto w-75 my-5">
+            <div class="col-12 col-lg-4 d-flex flex-column align-items-center text-center">
+                <p class="h1 text-uppercase encabezado mx-auto w-75 my-4 my-lg-5">
                     <strong>PROPÓSITO</strong>
                 </p>
 
@@ -98,21 +158,22 @@
                     <strong>innovación, eficiencia y tecnología avanzada</strong>.
                 </p>
                 <p class="text-justify w-75">
-                    Nuestro equipo impulsa la competitividad de nuestros clientes,
-                    optimizando recursos y garantizando su éxito a largo plazo.
+                    Nuestro equipo impulsa la competitividad de nuestros clientes, optimizando recursos
+                    y garantizando su éxito a largo plazo.
                 </p>
                 <input type="button" value="PRODUCTOS" class="btn btn-outline-secondary text-uppercase mt-3" />
             </div>
         </div>
-        <div class="row bg60 text-white text-center mt-5">
-            <div class="col-4 mt-5">
+
+        <div class="row bg60 text-white text-center py-4 footer">
+            <div class="col-12 col-md-4 mt-3 mt-md-5">
                 <img src="@/assets/grupo-blanco.svg" height="30" alt="" />
-                <p class="text-justify mt-4 w-80 mx-auto" style="margin-left: 60px !important;">
+                <p class="text-justify mt-4 w-80 mx-auto frase-footer">
                     "Transformamos el presente, aseguramos el futuro."
                 </p>
             </div>
-            <div class="col-4 mt-5 d-flex flex-column align-items-center contacto">
-                <p class="h3 text-start text-uppercase">
+            <div class="col-12 col-md-4 mt-4 mt-md-5 d-flex flex-column align-items-center contacto order-3 order-md-2">
+                <p class="h3 text-start text-uppercase w-100 text-center">
                     CONTACTO
                 </p>
                 <ul class="list-unstyled mt-4 servicio" style="text-align: left; padding-left: 40px">
@@ -120,32 +181,37 @@
                         <div class="me-2 d-flex align-items-center justify-content-center" style="width: 30px">
                             <img src="@/assets/ubicacion.svg" height="30" alt="" />
                         </div>
-                        <a href="https://maps.app.goo.gl/ZeEjGjPxPeQPzpAp9" target="_blank">Av. 12 de Octubre y Av.
-                            Coruña <br />
-                            Edificio Urban Plaza, Oficina 17</a>
+                        <a href="https://maps.app.goo.gl/ZeEjGjPxPeQPzpAp9" target="_blank">
+                            Av. 12 de Octubre y Av. Coruña <br />
+                            Edificio Urban Plaza, Oficina 17
+                        </a>
                     </li>
                     <li class="d-flex align-items-center mb-2">
                         <div class="me-2 d-flex align-items-center justify-content-center" style="width: 30px">
                             <img src="@/assets/mail.svg" height="30" alt="" />
                         </div>
-                        <a href="mailto:info@pluslogistics.com.ec" class="text-white">info@pluslogistics.com.ec</a>
+                        <a href="mailto:info@pluslogistics.com.ec" class="text-white">
+                            info@pluslogistics.com.ec
+                        </a>
                     </li>
                 </ul>
             </div>
-            <div class="col-4 mt-5 d-flex flex-column align-items-center">
-                <p class="h3 text-start text-uppercase">
+            <div class="col-12 col-md-4 mt-4 mt-md-5 d-flex flex-column align-items-center order-2 order-md-3">
+                <p class="h3 text-start text-uppercase w-100 text-center">
                     síguenos en:
                 </p>
                 <ul class="list-unstyled mt-4 servicio">
                     <li>
                         <a href="https://www.linkedin.com/company/pluslogistics/" target="_blank"
-                            rel="noopener noreferrer"><img src="@/assets/linkedin1.svg" height="35" alt=""
-                                class="px-2" />@pluslogistics</a>
+                            rel="noopener noreferrer">
+                            <img src="@/assets/linkedin1.svg" height="35" alt="" class="px-2" />@pluslogistics
+                        </a>
                     </li>
                     <li class="mt-1">
                         <a href="https://www.instagram.com/pluslogisticsec?igsh=MWV4Zzh0d2Jxa2ljNQ==" target="_blank"
-                            rel="noopener noreferrer"><img src="@/assets/instagram1.svg" height="35" alt=""
-                                class="px-2" />@pluslogistics</a>
+                            rel="noopener noreferrer">
+                            <img src="@/assets/instagram1.svg" height="35" alt="" class="px-2" />@pluslogistics
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -154,23 +220,65 @@
 </template>
 
 <script>
-import Player from '@vimeo/player';
+import Player from "@vimeo/player";
+
 export default {
     data() {
         return {
-            iframeSrc: "https://player.vimeo.com/video/1035428270?h=0907f9ae48&badge=0&autopause=0&controls=0&title=0&byline=0&portrait=0&loop=1&autoplay=1&muted=1",
+            iframeSrc:
+                "https://player.vimeo.com/video/1035428270?h=0907f9ae48" +
+                "&badge=0&autopause=0&controls=0&title=0&byline=0&portrait=0" +
+                "&loop=1&autoplay=1&muted=1&background=1",
+            isMenuOpen: false,
         };
     },
     mounted() {
         this.sendPlayCommand();
+        this.$nextTick(() => {
+            this.adjustVideoScale();
+            window.addEventListener("resize", this.adjustVideoScale);
+        });
+    },
+    beforeUnmount() {
+        window.removeEventListener("resize", this.adjustVideoScale);
     },
     methods: {
-        // Enviar un mensaje para iniciar la reproducción del video
         sendPlayCommand() {
             const iframe = this.$refs.vimeoIframe;
+            if (!iframe) return;
+
             const player = new Player(iframe);
-        }
-    }
+
+            player.getVideoWidth().then(w => {
+                player.getVideoHeight().then(h => {
+                    console.log("Vimeo video ratio:", w / h);
+                });
+            });
+        },
+        adjustVideoScale() {
+            const container = this.$refs.videoContainer;
+            const iframe = this.$refs.vimeoIframe;
+            if (!container || !iframe) return;
+
+            const cw = container.clientWidth;
+            const ch = container.clientHeight;
+            if (!cw || !ch) return;
+
+            const containerRatio = cw / ch;
+            const videoRatio = 3.2;
+
+            let scaleX = 1;
+            let scaleY = 1;
+
+            if (containerRatio > videoRatio) {
+                scaleY = containerRatio / videoRatio;
+            } else {
+                scaleX = videoRatio / containerRatio;
+            }
+
+            iframe.style.transform = `scale(${scaleX}, ${scaleY})`;
+        },
+    },
 };
 </script>
 
@@ -188,6 +296,10 @@ body {
     color: #3d3d3f;
 }
 
+.landing-wrapper {
+    padding-top: 70px;
+}
+
 ul {
     font-size: 12px;
 }
@@ -199,8 +311,8 @@ ul {
 }
 
 .sizing {
-    height: 500px;
     overflow: hidden;
+    min-height: 220px;
 }
 
 .text-justify {
@@ -261,14 +373,11 @@ ul {
 
 .menu-link {
     color: inherit;
-    /* Usa el color del contenedor padre */
     text-decoration: none;
-    /* Quita el subrayado */
 }
 
 .menu li:hover .menu-link {
     color: #e1001a;
-    /* Color al pasar el cursor */
 }
 
 .fijo {
@@ -280,7 +389,6 @@ ul {
     background-color: white;
     z-index: 1000;
     box-shadow: #3d3d3f 0px -30px 55px;
-    /* border-bottom: 2px solid #5a5a5a13; */
 }
 
 .flechaizq {
@@ -312,22 +420,167 @@ li a img:hover {
 }
 
 .menuderecho {
-    top: 60%;
-    right: -230px;
+    position: static;
 }
 
-.blanco {
-    background-color: white;
-    color: #3d3d3f;
+.hamburger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #3d3d3f;
+    margin: 4px 0;
 }
 
-.carousel-item img {
-    margin-top: 0px;
-    object-fit: fill;
-    /* Ajusta la imagen para que llene el contenedor sin distorsión */
+.mobile-menu li {
+    padding-left: 1rem;
+}
+
+.empresas-strip {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+}
+
+.empresas-strip img {
+    max-height: 30px;
+}
+
+.frase-footer {
+    max-width: 260px;
+}
+
+.empresas-header {
+    overflow: hidden;
+}
+
+.empresas-strip-inner {
+    gap: 0.5rem;
+}
+
+#carouselExampleIndicators {
+    position: relative;
+}
+
+.carousel-indicators {
+    z-index: 5;
+    bottom: 10px;
+}
+
+.carousel-media {
+    position: relative;
     width: 100%;
-    /* La imagen ocupará todo el ancho del contenedor */
-    height: 400px;
-    /* Ajusta la altura del slider (puedes cambiar este valor según tus necesidades) */
+    aspect-ratio: 3.2 / 1;
+    overflow: hidden;
+}
+
+.carousel-media iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.carousel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.img-contain {
+    object-fit: contain;
+}
+
+.img-cover {
+    object-fit: cover;
+}
+
+.img-fill {
+    object-fit: fill;
+}
+
+.img-fluid {
+    max-height: 500px;
+    height: auto;
+}
+
+.mobile-menu-wrapper {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 576px) {
+    .encabezado {
+        font-size: 32px !important;
+    }
+
+
+    .carousel-media {
+        height: 220px;
+    }
+
+    /* .carousel-media img {
+        object-fit: cover;
+    } */
+
+    .contacto {
+        background-size: 120%;
+        background-position: center;
+    }
+
+    .derecho {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    .empresas-header {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .empresas-strip-inner {
+        white-space: nowrap;
+    }
+
+    .empresas-strip-inner a img {
+        max-height: 26px;
+    }
+
+    .footer {
+        margin-top: 40px !important;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+    .encabezado {
+        font-size: 40px !important;
+    }
+
+    .carousel-media {
+        height: 320px;
+    }
+
+    .fijo img {
+        max-height: 30px;
+    }
+
+    .menu li {
+        font-size: 11px;
+        margin: 0 6px;
+    }
+
+    .empresas-strip-inner a img {
+        max-height: 28px;
+    }
+
+    .footer {
+        margin-top: 60px !important;
+    }
 }
 </style>

@@ -8,6 +8,10 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  server: {
+    host: '0.0.0.0',  // Permite acceder desde cualquier dirección de red
+    open: true         // Abre el navegador automáticamente en localhost
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
