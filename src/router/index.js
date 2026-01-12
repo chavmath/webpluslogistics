@@ -4,6 +4,7 @@ import Empresa from '../views/Empresa.vue'
 import App from '../App.vue'
 import Servicios from '@/views/Servicios.vue'
 import BodegaServicios from '@/views/BodegaServicios.vue'
+import AlmaPlusServicios from '@/views/AlmaPlusServicios.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/bodegaplus',
       name: 'BodegaPlus',
       component: BodegaServicios, 
+    },
+    {
+      path: '/almaplus',
+      name: 'AlmaPlus',
+      component: AlmaPlusServicios, 
     },
   ]
 })

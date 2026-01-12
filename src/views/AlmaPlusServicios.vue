@@ -8,10 +8,10 @@
                         <img src="@/assets/pluslogistics.svg" height="35" alt="Pluslogistics grupo"
                             data-toggle="tooltip" data-placement="top" title="Pluslogistics grupo" />
                     </router-link>
-                    <router-link to="/almaplus" class="escala me-2">
-                        <img src="@/assets/alma.svg" height="40" alt="Alma Plus" data-toggle="tooltip"
+                    <a href="#" class="escala me-2">
+                        <img src="@/assets/alma.svg" height="35" alt="Alma Plus" data-toggle="tooltip"
                             data-placement="top" title="Alma Plus" />
-                    </router-link>
+                    </a>
                     <router-link to="/bodegaplus" class="escala me-2">
                         <img src="@/assets/bodega.svg" height="40" alt="Bodega+" data-toggle="tooltip"
                             data-placement="top" title="Bodega+" />
@@ -87,7 +87,7 @@
         <div class="content">
             <div class="d-flex align-items-center justify-content-center mb-5">
                 <h1 class="text-center text-uppercase title mb-0">Nuestros Servicios</h1>
-                <img src="@/assets/bodega.svg" alt="Bodega+" height="60" class="me-3 escala mx-3" />
+                <img src="@/assets/alma.svg" alt="Alma Plus" height="60" class="me-3 escala mx-3 alma" />
             </div>
 
             <div class="row justify-content-center">
@@ -140,63 +140,59 @@ export default {
             isMenuOpen: false,
             services: [
                 {
-                    title: "Atención Personalizada",
+                    title: "Almacenamiento Estratégico",
                     description:
-                        "Nuestro equipo está listo para atender tus necesidades de almacenaje en todo momento. Maneja tus artículos fácilmente desde nuestra app y chatbot.",
-                    image: new URL("@/assets/servicios/atencionPersonal.jpg", import.meta.url).href,
+                        "Diseño y administración de almacenes optimizados que maximizan espacio y eficiencia, con alternativas de almacenamiento temporal o permanente según la necesidad del cliente.",
+                    image: new URL("@/assets/serviciosAlma/AlmacenamientoEstrategico.png", import.meta.url).href,
                     link: "",
                 },
                 {
-                    title: "Almacenamiento a tu medida",
+                    title: "Gestión de Compras",
                     description:
-                        "Pagas solo por el espacio que usas, cobramos por metro cúbico. Precios desde USD $0,99 más IVA por artículo.",
-                    image: new URL("@/assets/servicios/AlmacenamientoPersonal.png", import.meta.url).href,
+                        "Soporte estratégico en compras y análisis de proveedores para asegurar condiciones comerciales favorables.",
+                    image: new URL("@/assets/serviciosAlma/GestionDeCompras.png", import.meta.url).href,
                     link: "",
                 },
                 {
-                    title: "Bodega Virtual",
+                    title: "Gestión de Inventarios",
                     description:
-                        "Cada artículo tiene foto, medidas y peso en tu bodega virtual. Gestiona y solicita tus pertenencias desde la app cuando las necesites, sin desordenar tu espacio.",
-                    image: new URL("@/assets/servicios/BodegaVirtual1.png", import.meta.url).href,
+                        "Control y optimización del stock mediante una gestión estructurada orientada a mejorar la rotación y reducir pérdidas.",
+                    image: new URL("@/assets/serviciosAlma/GestionInventarios.png", import.meta.url).href,
                     link: "",
                 },
                 {
-                    title: "Embalaje",
+                    title: "Desarrollo de Aplicativos Web Especializados",
                     description:
-                        "Ofrecemos embalaje profesional para proteger tus artículos, garantizando que se mantengan en perfecto estado.",
-                    image: new URL("@/assets/servicios/Embalaje2.png", import.meta.url).href,
+                        "Software a medida para la gestión de inventarios, almacenes y flotas.",
+                    image: new URL("@/assets/serviciosAlma/DesarrolloAplicativosWeb.png", import.meta.url).href,
                     link: "",
                 },
                 {
-                    title: "Seguridad y Conservación",
+                    title: "Administración de Centros de Distribución",
                     description:
-                        "Tus artículos están en las mejores manos. Nuestra bodega física cuenta con estanterías y sistemas que se adaptan al tamaño, volumen y tipo de cada producto, asegurando su conservación e integridad.",
-                    image: new URL("@/assets/servicios/SeguridadConservacion.png", import.meta.url).href,
+                        "Soluciones de cross-docking, manejo de SKU y distribución just-in-time, enfocadas en reducir costos y mejorar tiempos de entrega.",
+                    image: new URL("@/assets/serviciosAlma/AdministracionCentrosDistribucion.png", import.meta.url).href,
                     link: "",
                 },
                 {
-                    title: "App / Chatbot",
+                    title: "Administración de Flotas",
                     description:
-                        "Gestiona tu bodega virtual desde la app o chatbot: Revisa tus artículos, solicita retiros o entregas. Ambos ofrecen las mismas funciones; Tú eliges la forma que más te guste, ¡Sin moverte de casa!",
-                    image: new URL("@/assets/servicios/chatbot.png", import.meta.url).href,
+                        "Monitoreo en tiempo real y planificación de mantenimientos preventivos para asegurar eficiencia y disponibilidad operativa.",
+                    image: new URL("@/assets/serviciosAlma/AdministracionFlotas.png", import.meta.url).href,
                     link: "",
                 },
                 {
-                    title: "Transporte",
+                    title: "Optimización de Procesos Logísticos",
                     description:
-                        "Recogemos tus artículos de tu hogar u oficina y los llevamos a nuestra bodega. Solicítalos en la app o chatbot cuando quieras, y los entregamos rápidamente donde necesites.",
-                    image: new URL("@/assets/servicios/Transporte.png", import.meta.url).href,
+                        "Consultoría para el rediseño de procesos logísticos utilizando metodologías ágiles y enfoque Lean.",
+                    image: new URL("@/assets/serviciosAlma/OptimizacionProcesosLogisticos.png", import.meta.url).href,
                     link: "",
                 },
                 {
-                    title: "Beneficios",
-                    description: [
-                        "Paga solo por el espacio utilizado.",
-                        "Almacenamiento adecuado y seguro.",
-                        "Transporte, embalaje y entrega a domicilio.",
-                        "Gestión 24/7 a través de nuestra app y chatbot."
-                    ],
-                    image: new URL("@/assets/servicios/Beneficios.png", import.meta.url).href,
+                    title: "Consultoría en Cadena de Suministro",
+                    description:
+                        "Asesoría en planificación y gestión de la cadena de suministro, con enfoque en agilidad y resiliencia.",
+                    image: new URL("@/assets/serviciosAlma/ConsultoriaCadenaSuministro.png", import.meta.url).href,
                     link: "",
                 },
             ],
@@ -442,6 +438,10 @@ p {
 }
 
 @media (max-width: 576px) {
+    .alma {
+        height: 40px !important;
+    }
+
     .servicios-wrapper {
         padding-top: 75px;
     }

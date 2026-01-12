@@ -8,10 +8,14 @@
                         <img src="@/assets/pluslogistics.svg" height="35" alt="Pluslogistics grupo"
                             data-toggle="tooltip" data-placement="top" title="Pluslogistics grupo" />
                     </a>
-                    <a href="#" class="escala me-2">
+                    <router-link to="/almaplus" class="escala me-2">
+                        <img src="@/assets/alma.svg" height="40" alt="Alma Plus" data-toggle="tooltip"
+                            data-placement="top" title="Alma Plus" />
+                    </router-link>
+                   <!--  <a href="#" class="escala me-2">
                         <img src="@/assets/alma.svg" height="35" alt="Alma Plus" data-toggle="tooltip"
                             data-placement="top" title="Alma Plus" />
-                    </a>
+                    </a> -->
                     <router-link to="/bodegaplus" class="escala me-2">
                         <img src="@/assets/bodega.svg" height="40" alt="Bodega+" data-toggle="tooltip"
                             data-placement="top" title="Bodega+" />
