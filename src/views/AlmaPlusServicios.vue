@@ -118,11 +118,7 @@
                                 <!-- Si es string => párrafo -->
                                 <p v-else class="text-center text-justify">
                                     {{ card.description }}
-                                </p>
-
-                                <router-link :to="card.link" class="btn btn-light mt-3" v-if="card.link">
-                                    Ver más
-                                </router-link>
+                                </p>                                
                             </div>
                         </div>
                     </div>
