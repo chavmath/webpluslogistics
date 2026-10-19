@@ -107,7 +107,7 @@
 
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="carousel-media">
+                        <div ref="videoContainer" class="carousel-media">
                             <iframe ref="vimeoIframe" :src="iframeSrc"
                                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
                                 title="Presentación comercial Pluslogistics (1)"></iframe>
@@ -234,30 +234,38 @@ export default {
                 "&badge=0&autopause=0&controls=0&title=0&byline=0&portrait=0" +
                 "&loop=1&autoplay=1&muted=1&background=1",
             isMenuOpen: false,
+            videoRatio: 16 / 9,
         };
     },
     mounted() {
-        this.sendPlayCommand();
-        this.$nextTick(() => {
-            this.adjustVideoScale();
-            window.addEventListener("resize", this.adjustVideoScale);
-        });
+        this.adjustVideoScale();
+        this.videoResizeObserver = new ResizeObserver(this.adjustVideoScale);
+        this.videoResizeObserver.observe(this.$refs.videoContainer);
+        this.vimeoPlayer = new Player(this.$refs.vimeoIframe);
+        this.vimeoPlayer.on("loaded", this.updateVideoDimensions);
+        this.vimeoPlayer.on("resize", this.updateVideoDimensions);
+        this.updateVideoDimensions();
     },
     beforeUnmount() {
-        window.removeEventListener("resize", this.adjustVideoScale);
+        this.videoResizeObserver?.disconnect();
+        this.vimeoPlayer?.destroy().catch(error => {
+            console.warn("No se pudo liberar el reproductor de Vimeo:", error);
+        });
     },
     methods: {
-        sendPlayCommand() {
-            const iframe = this.$refs.vimeoIframe;
-            if (!iframe) return;
-
-            const player = new Player(iframe);
-
-            player.getVideoWidth().then(w => {
-                player.getVideoHeight().then(h => {
-                    console.log("Vimeo video ratio:", w / h);
-                });
-            });
+        async updateVideoDimensions() {
+            try {
+                const [width, height] = await Promise.all([
+                    this.vimeoPlayer.getVideoWidth(),
+                    this.vimeoPlayer.getVideoHeight(),
+                ]);
+                if (width > 0 && height > 0) {
+                    this.videoRatio = width / height;
+                    this.adjustVideoScale();
+                }
+            } catch (error) {
+                console.warn("No se pudieron obtener las dimensiones de Vimeo:", error);
+            }
         },
         adjustVideoScale() {
             const container = this.$refs.videoContainer;
@@ -268,19 +276,11 @@ export default {
             const ch = container.clientHeight;
             if (!cw || !ch) return;
 
-            const containerRatio = cw / ch;
-            const videoRatio = 3.2;
-
-            let scaleX = 1;
-            let scaleY = 1;
-
-            if (containerRatio > videoRatio) {
-                scaleY = containerRatio / videoRatio;
-            } else {
-                scaleX = videoRatio / containerRatio;
-            }
-
-            iframe.style.transform = `scale(${scaleX}, ${scaleY})`;
+            // Equivalent to object-fit: cover, preserving the video's native ratio.
+            const width = Math.max(cw, ch * this.videoRatio);
+            const height = Math.max(ch, cw / this.videoRatio);
+            iframe.style.width = `${width}px`;
+            iframe.style.height = `${height}px`;
         },
     },
 };
@@ -479,7 +479,9 @@ li a img:hover {
 
 .carousel-media iframe {
     position: absolute;
-    inset: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
     border: 0;
